@@ -75,22 +75,17 @@ namespace my_traits {
 
     template<bool Cond, class TrueType, class FalseType>
     struct conditional {
-        static constexpr bool value = Cond;
         using type = TrueType;
     };
     template<class TrueType, class FalseType>
     struct conditional<false, TrueType, FalseType> {
-        static constexpr bool value = false;
         using type = FalseType;
     };
 
     template<bool Cond, class T = void>
-    struct enable_if {
-        static constexpr bool value = Cond; 
-    };
+    struct enable_if { };
     template<class T>
     struct enable_if<true, T> {
-        static constexpr bool value = true;
         using type = T;
     };
 
